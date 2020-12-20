@@ -1,0 +1,51 @@
+{
+  "name": "typescript-hooks-library-template",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "./dist/index.js",
+  "module": "./esm/index.js",
+  "react-native": "./esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**",
+    "esm/**"
+  ],
+  "scripts": {
+    "dev": "tsc --module ES6 --outDir esm --watch",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:cjs": "ncc build src/index.ts -o dist -m -e react",
+    "build:esm": "tsc --module ES6 --outDir esm",
+    "types:watch": "tsc --watch",
+    "types": "tsc --noEmit",
+    "format": "prettier --write \"{src,test,examples}/**/*.{ts,tsx}\"",
+    "lint": "eslint \"{src,test,examples}/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint \"{src,test,examples}/**/*.{ts,tsx}\" --fix",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@testing-library/react": "9.3.0",
+    "@types/jest": "24.0.20",
+    "@types/node": "11.12.0",
+    "@types/react": "16.9.11",
+    "@typescript-eslint/eslint-plugin": "2.5.0",
+    "@typescript-eslint/parser": "2.5.0",
+    "@zeit/ncc": "0.20.5",
+    "eslint": "6.6.0",
+    "eslint-config-prettier": "6.5.0",
+    "eslint-plugin-react": "7.20.6",
+    "eslint-plugin-react-hooks": "4.1.2",
+    "jest": "24.9.0",
+    "prettier": "1.18.2",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "ts-jest": "24.1.0",
+    "typescript": "3.6.4"
+  },
+  "peerDependencies": {
+    "react": "^16.11.0 || ^17.0.0"
+  }
+}
